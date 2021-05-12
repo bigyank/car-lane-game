@@ -63,7 +63,7 @@ function init() {
       lane2.detectCollision(playerCar) ||
       lane3.detectCollision(playerCar)
     ) {
-      console.log("collided");
+      endGame();
     } else {
       updateScore(ctx, canvas.width);
       requestAnimationFrame(play);
@@ -93,9 +93,26 @@ function init() {
     ctx.fillStyle = "#ffffff";
     ctx.fillText(score, canvas.width / 2 - 20, 50);
   }
+
+  function endGame() {
+    endDiv.style.display = "block";
+  }
 }
 
 const canvas = document.querySelector("canvas");
+const welcomeDiv = document.querySelector(".welcome-container");
+const endDiv = document.querySelector(".end-container");
 const ctx = canvas.getContext("2d");
+const playBtn = document.getElementById("play-btn");
+const endBtn = document.getElementById("end-btn");
 
-init();
+playBtn.addEventListener("click", () => {
+  welcomeDiv.style.display = "none";
+  canvas.style.display = "block";
+  init();
+});
+
+endBtn.addEventListener("click", () => {
+  endDiv.style.display = "none";
+  init();
+});

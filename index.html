@@ -4,10 +4,36 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="style/style.css" />
     <title>Car Lane</title>
   </head>
   <body>
+    <div class="welcome-container">
+      <div class="welcome-box">
+        <h1>Car Lane Game</h1>
+        <p>
+          <p>press "A" to go left</p>
+          <p>press "D" to go right</p>
+        </p>
+        <button class="btn" id="play-btn">Start</button>
+      </div>
+    </div>
+
+    <div class="end-container">
+      <div class="end-box">
+        <h1>Game Over</h1>
+        <p>
+          <span>Score: </span>
+          <span id="score">0</span>
+        </p>
+        <button class="btn" id="end-btn">ReStart</button>
+      </div>
+    </div>
     <canvas></canvas>
     <script src="javascript/constants.js"></script>
     <script src="javascript/Assets.js"></script>
