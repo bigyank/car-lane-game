@@ -4,27 +4,30 @@ function init() {
 
   const laneWidth = Math.floor(canvas.width / 3);
 
-  const firstLane = new Road(
-    { x: 0, y: 0 },
-    { x: laneWidth, y: canvas.height },
-    laneWidth
-  );
+  const carPos = (laneWidth - carWidth) / 2;
 
-  const secondLane = new Road(
-    { x: laneWidth, y: 0 },
-    { x: 2 * laneWidth, y: canvas.height },
-    laneWidth
-  );
+  const { firstLane, secondLane, thirdLane } = constructLane(laneWidth);
 
-  const thirdLane = new Road(
-    { x: 2 * laneWidth + 2, y: 0 },
-    { x: canvas.width, y: canvas.height },
-    laneWidth
-  );
+  const carPosStart = [
+    firstLane.position.start.x + carPos,
+    secondLane.position.start.x + carPos,
+    thirdLane.position.start.x + carPos,
+  ];
+
+  let currentLane = 1;
+
+  const PLAYER_CAR_INITIAL = {
+    x: carPosStart[currentLane],
+    y: canvas.height - carHeight - 20,
+  };
+
+  const playerCar = new Car(PLAYER_CAR_INITIAL, carWidth, carHeight);
 
   function play() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    [firstLane, secondLane, thirdLane].map((road) => road.draw(ctx));
+    [firstLane, secondLane, thirdLane, playerCar].map((object) =>
+      object.draw(ctx)
+    );
     requestAnimationFrame(play);
   }
 

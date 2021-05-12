@@ -10,7 +10,7 @@ class Road {
   draw(ctx) {
     [...Array(3)].map(() => {
       ctx.drawImage(
-        images.road,
+        gameAssets.getRoad(),
         this.position.start.x,
         this.position.start.y,
         this.width,
@@ -21,7 +21,7 @@ class Road {
     this.position.start.y += speed;
 
     ctx.drawImage(
-      images.road,
+      gameAssets.getRoad(),
       this.position.start.x,
       this.position.start.y - this.position.end.y,
       this.width,
