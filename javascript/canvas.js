@@ -32,6 +32,22 @@ function init() {
   }
 
   requestAnimationFrame(play);
+
+  document.addEventListener("keydown", ({ key }) => {
+    switch (true) {
+      case key === "a" && currentLane !== 0:
+        currentLane -= 1;
+        playerCar.position.start.x = carPosStart[currentLane];
+        playerCar.position.end.x = playerCar.position.start.x + carWidth;
+        break;
+
+      case key === "d" && currentLane !== 2:
+        currentLane += 1;
+        playerCar.position.start.x = carPosStart[currentLane];
+        playerCar.position.end.x = playerCar.position.start.x + carWidth;
+        break;
+    }
+  });
 }
 
 const canvas = document.querySelector("canvas");
