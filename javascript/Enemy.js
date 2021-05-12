@@ -24,10 +24,18 @@ class Enemy {
     );
   }
 
-  moveYaxis() {
+  moveYaxis(height) {
     if (this.active) {
       this.position.start.y += speed;
       this.position.end.y += speed;
+      this.updateScore(height);
+    }
+  }
+
+  updateScore(height) {
+    if (this.position.start.y >= height) {
+      this.active = false;
+      score++;
     }
   }
 }

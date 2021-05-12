@@ -6,14 +6,14 @@ function init() {
 
   const carPos = (laneWidth - carWidth) / 2;
 
-  const { firstLane, secondLane, thirdLane } = constructLane(laneWidth, carPos);
+  const { lane1, lane2, lane3 } = constructLane(laneWidth, carPos);
 
-  const lanes = [firstLane, secondLane, thirdLane];
+  const lanes = [lane1, lane2, lane3];
 
   const carPosStart = [
-    firstLane.position.start.x + carPos,
-    secondLane.position.start.x + carPos,
-    thirdLane.position.start.x + carPos,
+    lane1.position.start.x + carPos,
+    lane2.position.start.x + carPos,
+    lane3.position.start.x + carPos,
   ];
 
   let currentLane = 1;
@@ -49,7 +49,7 @@ function init() {
   function play() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    [firstLane, secondLane, thirdLane, playerCar].map((object) => {
+    [lane1, lane2, lane3, playerCar].map((object) => {
       object.draw(ctx);
       if (object instanceof Road) {
         object.moveEnemy(ctx, canvas.height);
@@ -58,7 +58,16 @@ function init() {
 
     generateEnemy();
 
-    requestAnimationFrame(play);
+    if (
+      lane1.detectCollision(playerCar) ||
+      lane2.detectCollision(playerCar) ||
+      lane3.detectCollision(playerCar)
+    ) {
+      console.log("collided");
+    } else {
+      updateScore(ctx, canvas.width);
+      requestAnimationFrame(play);
+    }
   }
 
   requestAnimationFrame(play);
@@ -78,6 +87,12 @@ function init() {
         break;
     }
   });
+
+  function updateScore() {
+    ctx.font = "bold 50px Arial";
+    ctx.fillStyle = "#ffffff";
+    ctx.fillText(score, canvas.width / 2 - 20, 50);
+  }
 }
 
 const canvas = document.querySelector("canvas");

@@ -47,11 +47,28 @@ class Road {
 
   moveEnemy(ctx, height) {
     for (let i = 0; i < this.cars.length; i++) {
-      let obs = this.cars[i];
-      if (obs.active) {
-        obs.moveYaxis(height);
-        obs.draw(ctx);
+      let car = this.cars[i];
+      if (car.active) {
+        car.moveYaxis(height);
+        car.draw(ctx);
       }
     }
+  }
+
+  detectCollision(playerCar) {
+    for (let i = 0; i < this.cars.length; i++) {
+      let car = this.cars[i];
+      if (car.active) {
+        if (
+          playerCar.position.start.x < car.position.end.x &&
+          playerCar.position.end.x > car.position.start.x &&
+          playerCar.position.start.y < car.position.end.y &&
+          playerCar.position.end.y > car.position.start.y
+        ) {
+          return true;
+        }
+      }
+    }
+    return false;
   }
 }
