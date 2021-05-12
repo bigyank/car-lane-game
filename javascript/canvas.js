@@ -1,6 +1,6 @@
 function init() {
   canvas.width = 400;
-  canvas.height = 710;
+  canvas.height = document.body.clientHeight;
 
   const laneWidth = Math.floor(canvas.width / 3);
 
