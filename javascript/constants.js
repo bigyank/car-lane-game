@@ -1,0 +1,1 @@
+const speed = 10;
