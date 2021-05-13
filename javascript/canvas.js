@@ -95,6 +95,7 @@ function init() {
   }
 
   function endGame() {
+    scoreElement.innerText = score;
     endDiv.style.display = "block";
   }
 }
@@ -105,6 +106,7 @@ const endDiv = document.querySelector(".end-container");
 const ctx = canvas.getContext("2d");
 const playBtn = document.getElementById("play-btn");
 const endBtn = document.getElementById("end-btn");
+const scoreElement = document.getElementById("score");
 
 playBtn.addEventListener("click", () => {
   welcomeDiv.style.display = "none";
