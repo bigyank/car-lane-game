@@ -87,18 +87,6 @@ function init() {
         break;
     }
   });
-
-  function updateScore() {
-    ctx.font = "bold 50px Arial";
-    ctx.fillStyle = "#ffffff";
-    ctx.fillText(score, canvas.width / 2 - 20, 50);
-  }
-
-  function endGame() {
-    scoreElement.innerText = score;
-    score = 0;
-    endDiv.style.display = "block";
-  }
 }
 
 const canvas = document.querySelector("canvas");

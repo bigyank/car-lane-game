@@ -25,6 +25,12 @@ function constructLane(laneWidth, carPos) {
 
 function updateScore(ctx, canvasWidth) {
   ctx.font = "bold 50px Arial";
-  ctx.fillStyle = "#ffffff";
+  ctx.fillStyle = "#fff";
   ctx.fillText(score, canvasWidth / 2 - 20, 50);
+}
+
+function endGame() {
+  scoreElement.innerText = score;
+  score = 0;
+  endDiv.style.display = "block";
 }
