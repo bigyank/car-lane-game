@@ -96,6 +96,7 @@ function init() {
 
   function endGame() {
     scoreElement.innerText = score;
+    score = 0;
     endDiv.style.display = "block";
   }
 }
